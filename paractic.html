@@ -1,10 +1,19 @@
+
+
+
+
+
+
+  🌊 UPDATED ONE‑PAGE WEBSITE WITH MORE INFO
+(You can paste this directly into your file.)
+
+html
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
   <title>Ocean Awareness Project</title>
 
-  <!-- Embedded CSS -->
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -15,7 +24,6 @@
 
     header {
       background: #89c7c5;
-      color: white;
       padding: 15px;
     }
 
@@ -40,16 +48,13 @@
 
     section {
       padding: 40px;
+      max-width: 900px;
+      margin: auto;
     }
 
-    h1, h2 {
-      margin-top: 0;
-    }
-
-    /* Canvas styling */
     #ocean {
       display: block;
-      margin: 40px auto;
+      margin: 20px auto;
       border: 3px solid white;
       border-radius: 10px;
     }
@@ -58,7 +63,6 @@
 
 <body>
 
-<!-- NAVIGATION -->
 <header>
   <h1>🌊 Ocean Awareness Project</h1>
   <nav>
@@ -72,11 +76,16 @@
 <section id="home">
   <h2>Protect Our Oceans</h2>
   <p>
-    Explore the beauty beneath the surface — and the threats it faces.
+    The ocean covers more than 70% of our planet and produces over half of the oxygen we breathe.
+    It is home to millions of species, many of which we haven’t even discovered yet.
   </p>
   <p>
-    Oceans regulate our climate, support marine life, and sustain millions of people.
-    But pollution threatens these ecosystems every day.
+    Unfortunately, human activity has pushed marine ecosystems to the brink. Plastic waste,
+    chemical spills, oil leaks, and untreated sewage are poisoning the waters that sustain life.
+  </p>
+  <p>
+    Every year, over <strong>8 million tons of plastic</strong> enter the ocean — the equivalent of a garbage truck
+    dumping trash into the sea every minute. If we don’t act now, there may be more plastic than fish by 2050.
   </p>
 </section>
 
@@ -84,81 +93,38 @@
 <section id="mission">
   <h2>Our Mission</h2>
   <p>
-    We believe that more than any technological innovation, spreading awareness 
-    and educational knowledge has a larger and broader impact.
+    Our goal is simple: to raise awareness about ocean pollution and inspire people to take action.
+    We believe that education is the most powerful tool for change. When people understand the impact
+    of pollution, they are more likely to make sustainable choices.
   </p>
   <p>
-    By teaching people how pollution works and how to reduce it, we can create a real and 
-    long-lasting impact.
+    Through interactive tools like our pollution simulator, we help people visualize how harmful
+    pollutants affect marine life. Fish lose their color, water becomes murky, and ecosystems collapse —
+    all consequences of real-world pollution.
+  </p>
+  <p>
+    Whether you're a student, a teacher, or just someone who cares about the planet, we hope this project
+    encourages you to protect our oceans and spread awareness in your community.
   </p>
 </section>
 
-<!-- NEW SIMULATION SECTION (React-style converted to HTML) -->
-<section id="simulation" style="padding: 40px; max-width: 900px; margin: auto;">
-
-  <!-- Tag -->
-  <div style="
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 14px;
-    border-radius: 20px;
-    border: 1px solid rgba(0, 200, 200, 0.3);
-    background: rgba(0, 200, 200, 0.1);
-    color: teal;
-    font-size: 14px;
-    margin-bottom: 20px;
-  ">
-    <span style="font-weight: bold;">🧪</span>
-    <span>Interactive Experience</span>
-  </div>
-
-  <!-- Title -->
-  <h1 style="font-size: 40px; margin-bottom: 10px;">
-    Pollution Simulator
-  </h1>
-
-  <!-- Description -->
-  <p style="color: rgba(255,255,255,0.7); font-size: 18px; max-width: 600px;">
-    Select a pollutant and click on the ocean to drop it. Watch how the water quality degrades,
-    fish lose color, and the ecosystem collapses as pollution increases.
+<!-- SIMULATION SECTION -->
+<section id="simulation">
+  <h2>Cleanup Game</h2>
+  <p>
+    This interactive simulator shows how pollution spreads through the ocean. Click anywhere in the water
+    to drop pollutants and watch how the environment reacts. The fish will swim, the pollution will spread,
+    and the ocean floor will slowly become overwhelmed.
+  </p>
+  <p>
+    This simple model represents a much larger issue: once pollution enters the ocean, it is extremely
+    difficult to remove. Even small actions can have big consequences.
   </p>
 
-  <!-- Canvas -->
   <canvas id="ocean" width="800" height="600"></canvas>
-
-  <!-- Feature Cards -->
-  <div style="
-    margin-top: 40px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-  ">
-    <div style="padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03);">
-      <h3 style="color: white; margin-bottom: 8px;">Water Color Changes</h3>
-      <p style="color: rgba(255,255,255,0.6); font-size: 14px;">
-        Watch the ocean turn murky and brown as pollution increases, just like real contaminated waters.
-      </p>
-    </div>
-
-    <div style="padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03);">
-      <h3 style="color: white; margin-bottom: 8px;">Marine Life Fades</h3>
-      <p style="color: rgba(255,255,255,0.6); font-size: 14px;">
-        Fish lose their vibrant colors and become ghostly — representing real biodiversity loss.
-      </p>
-    </div>
-
-    <div style="padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03);">
-      <h3 style="color: white; margin-bottom: 8px;">Toxicity Varies</h3>
-      <p style="color: rgba(255,255,255,0.6); font-size: 14px;">
-        Different pollutants have different toxicity levels. Oil and chemicals are far worse than plastic.
-      </p>
-    </div>
-  </div>
-
 </section>
 
-<!-- SIMULATION JAVASCRIPT -->
+<!-- JAVASCRIPT (unchanged simulator) -->
 <script>
 const canvas = document.getElementById("ocean");
 const ctx = canvas.getContext("2d");
@@ -166,7 +132,6 @@ const ctx = canvas.getContext("2d");
 const Width = canvas.width;
 const Height = canvas.height;
 
-// Fish drawing
 function drawFish(x, y, size, color) {
   ctx.fillStyle = color;
   
@@ -182,7 +147,6 @@ function drawFish(x, y, size, color) {
   ctx.fill();
 }
 
-// Main fish
 const mainFish = {
   x: Math.random() * Width,
   y: Math.random() * (Height - 100),
@@ -192,7 +156,6 @@ const mainFish = {
   speedY: Math.random() * 1 - 0.5
 };
 
-// Many fish
 const fishList = [];
 for (let i = 0; i < 11; i++) {
   fishList.push({
@@ -205,7 +168,6 @@ for (let i = 0; i < 11; i++) {
   });
 }
 
-// Pollution
 const pollutionList = [];
 for (let i = 0; i < 5; i++) {
   pollutionList.push({
@@ -223,9 +185,8 @@ function drawPollution(p) {
   ctx.fill();
 }
 
-// Add pollution on click
 canvas.addEventListener("click", function (event) {
-  const rect = canvas.getBoundingClientClientRect();
+  const rect = canvas.getBoundingClientRect();
   pollutionList.push({
     x: event.clientX - rect.left,
     y: event.clientY - rect.top,
@@ -234,17 +195,13 @@ canvas.addEventListener("click", function (event) {
   });
 });
 
-// Animation loop
 function draw() {
-  // Background
   ctx.fillStyle = "blue";
   ctx.fillRect(0, 0, Width, Height);
 
-  // Sand
   ctx.fillStyle = "tan";
   ctx.fillRect(0, Height - 100, Width, 100);
 
-  // Main fish movement
   mainFish.x += mainFish.speedX;
   mainFish.y += mainFish.speedY;
 
@@ -254,7 +211,6 @@ function draw() {
 
   drawFish(mainFish.x, mainFish.y, mainFish.size, mainFish.color);
 
-  // Other fish
   fishList.forEach(f => {
     f.x += f.speedX;
     f.y += f.speedY;
@@ -266,7 +222,6 @@ function draw() {
     drawFish(f.x, f.y, f.size, f.color);
   });
 
-  // Pollution falling
   pollutionList.forEach(p => {
     p.y += 1;
     if (p.y > Height - 100) p.y = Height - 100;
