@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Ocean Awareness Project</title>
+
+  <!-- Embedded CSS -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #05c1f5;
+      color: white;
+    }
+
+    header {
+      background: #89c7c5;
+      color: white;
+      padding: 15px;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    .nav-btn {
+      background-color: #db6060;
+      padding: 12px 18px;
+      border-radius: 5px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      margin-right: 10px;
+      transition: 0.2s;
+    }
+
+    .nav-btn:hover {
+      background-color: #b94f4f;
+    }
+
+    section {
+      padding: 40px;
+    }
+
+    h1, h2 {
+      margin-top: 0;
+    }
+
+    /* Canvas styling */
+    #ocean {
+      display: block;
+      margin: 40px auto;
+      border: 3px solid white;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<header>
+  <h1>🌊 Ocean Awareness Project</h1>
+  <nav>
+    <a href="#home" class="nav-btn">Home</a>
+    <a href="#mission" class="nav-btn">Our Mission</a>
+    <a href="#simulation" class="nav-btn">Cleanup Game</a>
+  </nav>
+</header>
+
+<!-- HOME SECTION -->
+<section id="home">
+  <h2>Protect Our Oceans</h2>
+  <p>
+    Explore the beauty beneath the surface — and the threats it faces.
+  </p>
+  <p>
+    Oceans regulate our climate, support marine life, and sustain millions of people.
+    But pollution threatens these ecosystems every day.
+  </p>
+</section>
+
+<!-- MISSION SECTION -->
+<section id="mission">
+  <h2>Our Mission</h2>
+  <p>
+    We believe that more than any technological innovation, spreading awareness 
+    and educational knowledge has a larger and broader impact.
+  </p>
+  <p>
+    By teaching people how pollution works and how to reduce it, we can create a real and 
+    long-lasting impact.
+  </p>
+</section>
+
+<!-- NEW SIMULATION SECTION (React-style converted to HTML) -->
+<section id="simulation" style="padding: 40px; max-width: 900px; margin: auto;">
+
+  <!-- Tag -->
+  <div style="
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 200, 200, 0.3);
+    background: rgba(0, 200, 200, 0.1);
+    color: teal;
+    font-size: 14px;
+    margin-bottom: 20px;
+  ">
+    <span style="font-weight: bold;">🧪</span>
+    <span>Interactive Experience</span>
+  </div>
+
+  <!-- Title -->
+  <h1 style="font-size: 40px; margin-bottom: 10px;">
+    Pollution Simulator
+  </h1>
+
+  <!-- Description -->
+  <p style="color: rgba(255,255,255,0.7); font-size: 18px; max-width: 600px;">
+    Select a pollutant and click on the ocean to drop it. Watch how the water quality degrades,
+    fish lose color, and the ecosystem collapses as pollution increases.
+  </p>
+
+  <!-- Canvas -->
+  <canvas id="ocean" width="800" height="600"></canvas>
+
+  <!-- Feature Cards -->
+  <div style="
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  ">
+    <div style="padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03);">
+      <h3 style="color: white; margin-bottom: 8px;">Water Color Changes</h3>
+      <p style="color: rgba(255,255,255,0.6); font-size: 14px;">
+        Watch the ocean turn murky and brown as pollution increases, just like real contaminated waters.
+      </p>
+    </div>
+
+    <div style="padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03);">
+      <h3 style="color: white; margin-bottom: 8px;">Marine Life Fades</h3>
+      <p style="color: rgba(255,255,255,0.6); font-size: 14px;">
+        Fish lose their vibrant colors and become ghostly — representing real biodiversity loss.
+      </p>
+    </div>
+
+    <div style="padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03);">
+      <h3 style="color: white; margin-bottom: 8px;">Toxicity Varies</h3>
+      <p style="color: rgba(255,255,255,0.6); font-size: 14px;">
+        Different pollutants have different toxicity levels. Oil and chemicals are far worse than plastic.
+      </p>
+    </div>
+  </div>
+
+</section>
+
+<!-- SIMULATION JAVASCRIPT -->
+<script>
+const canvas = document.getElementById("ocean");
+const ctx = canvas.getContext("2d");
+
+const Width = canvas.width;
+const Height = canvas.height;
+
+// Fish drawing
+function drawFish(x, y, size, color) {
+  ctx.fillStyle = color;
+  
+  ctx.beginPath();
+  ctx.ellipse(x, y, size, size * 0.6, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.moveTo(x - size, y);
+  ctx.lineTo(x - size - size * 0.8, y - size * 0.6);
+  ctx.lineTo(x - size - size * 0.8, y + size * 0.6);
+  ctx.closePath();
+  ctx.fill();
+}
+
+// Main fish
+const mainFish = {
+  x: Math.random() * Width,
+  y: Math.random() * (Height - 100),
+  size: 20,
+  color: "yellow",
+  speedX: Math.random() * 2 + 1,
+  speedY: Math.random() * 1 - 0.5
+};
+
+// Many fish
+const fishList = [];
+for (let i = 0; i < 11; i++) {
+  fishList.push({
+    x: Math.random() * Width,
+    y: Math.random() * (Height - 100),
+    size: Math.random() * 20 + 10,
+    color: ["yellow", "orange", "pink"][Math.floor(Math.random() * 3)],
+    speedX: Math.random() * 2 + 1,
+    speedY: Math.random() * 1 - 0.5
+  });
+}
+
+// Pollution
+const pollutionList = [];
+for (let i = 0; i < 5; i++) {
+  pollutionList.push({
+    x: Math.random() * Width,
+    y: Math.random() * (Height - 100),
+    radius: Math.random() * 20 + 10,
+    color: "brown",
+  });
+}
+
+function drawPollution(p) {
+  ctx.beginPath();
+  ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+  ctx.fillStyle = p.color;
+  ctx.fill();
+}
+
+// Add pollution on click
+canvas.addEventListener("click", function (event) {
+  const rect = canvas.getBoundingClientClientRect();
+  pollutionList.push({
+    x: event.clientX - rect.left,
+    y: event.clientY - rect.top,
+    radius: 16,
+    color: "brown"
+  });
+});
+
+// Animation loop
+function draw() {
+  // Background
+  ctx.fillStyle = "blue";
+  ctx.fillRect(0, 0, Width, Height);
+
+  // Sand
+  ctx.fillStyle = "tan";
+  ctx.fillRect(0, Height - 100, Width, 100);
+
+  // Main fish movement
+  mainFish.x += mainFish.speedX;
+  mainFish.y += mainFish.speedY;
+
+  if (mainFish.x > Width) mainFish.x = 0;
+  if (mainFish.x < 0) mainFish.x = Width;
+  if (mainFish.y > Height - 100 || mainFish.y < 0) mainFish.speedY *= -1;
+
+  drawFish(mainFish.x, mainFish.y, mainFish.size, mainFish.color);
+
+  // Other fish
+  fishList.forEach(f => {
+    f.x += f.speedX;
+    f.y += f.speedY;
+
+    if (f.x > Width) f.x = 0;
+    if (f.x < 0) f.x = Width;
+    if (f.y > Height - 100 || f.y < 0) f.speedY *= -1;
+
+    drawFish(f.x, f.y, f.size, f.color);
+  });
+
+  // Pollution falling
+  pollutionList.forEach(p => {
+    p.y += 1;
+    if (p.y > Height - 100) p.y = Height - 100;
+    drawPollution(p);
+  });
+
+  requestAnimationFrame(draw);
+}
+
+draw();
+</script>
+
+</body>
+</html>
